@@ -10,13 +10,23 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {ItemModule} from "../app/modules/item/item.module"
 import { UserModule } from './modules/user/user.module';
+import { ProfilePage } from './modules/user/pages/profile/profile.page';
+import { EditUserPage } from './modules/user/pages/edit-user/edit-user.page';
+import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
+import { SelectorItemsPage } from './modules/item/pages/selector-items/selector-items.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ProfilePage,
+  EditUserPage,
+  SelectorItemsPage
+  ],
   imports: [
     BrowserModule,
      IonicModule.forRoot(),
       AppRoutingModule,
+      DynamicFormModule,
       ItemModule,
       UserModule,
        ServiceWorkerModule.register('ngsw-worker.js', {
