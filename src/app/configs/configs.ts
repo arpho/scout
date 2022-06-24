@@ -1,6 +1,6 @@
 import { UsersType } from "../models/usersType";
 import { RoleModel } from "../modules/user/models/privilegesLevelModel";
-import { UserTpeModedl } from "../modules/user/models/UserTypeModel";
+import { UserTypeModel } from "../modules/user/models/UserTypeModel";
 
 export const configs = {
   accessLevel: [
