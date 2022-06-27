@@ -1,10 +1,10 @@
 
 import { DropdownQuestion } from "../modules/dynamic-form/models/question-dropdown"
-import { Address } from "../modules/geolocation/models/Address"
+import { Address } from "../models/Address"
 import { Serializers } from "../modules/helpers/serializers"
 import { DateModel } from "../modules/user/models/birthDateModel"
 import { UserModel } from "../modules/user/models/userModel"
-import { UserType } from "./usersType"
+import { UsersType } from "./usersType"
 
 export class Telephone {
     numero: string
