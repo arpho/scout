@@ -20,17 +20,19 @@ export class UserModel implements ItemModelInterface {
   key: string;
   offlineEnabled = false // for the moment false for default
   uid: string;
-  level: number;
+  _level: number;
   quickActions: Array<QuickAction>;
   enabled: boolean;
   role: RoleModel;
   service: ItemServiceInterface;
 
+  
+
   constructor(user?: {}, key?: string,) {
     this.load(user)
-    if(this.level){
+    if(this._level){
       this.role= configs.accessLevel.filter(
-        (access: RoleModel) => access.value === this.level
+        (access: RoleModel) => access.value === this._level
       )[0];
     }
     if (key) {
@@ -85,7 +87,7 @@ export class UserModel implements ItemModelInterface {
       this.birthDate = new DateModel(item['birthDate']);
     }
     this.role = configs.accessLevel.filter(
-      (access: RoleModel) => access.value === this.level
+      (access: RoleModel) => access.value === this._level
     )[0];
   }
   hasQuickActions() {
@@ -130,7 +132,7 @@ export class UserModel implements ItemModelInterface {
 
   load(args) {
     Object.assign(this, args)
-    this.role = this.roleFactory(this.level)
+    this.role = this.roleFactory(this._level)
     this.key = this.key ?? this.uid
     this.enabled = Boolean(this.enabled)
     return this;
