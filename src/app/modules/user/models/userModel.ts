@@ -26,7 +26,15 @@ export class UserModel implements ItemModelInterface {
   role: RoleModel;
   service: ItemServiceInterface;
 
-  
+  set level(level:number|string){
+    this._level = Number(level)
+    this.role = configs.accessLevel.filter(
+      (access: RoleModel) => access.value === this._level
+    )[0]; 
+  }
+  get level():number{
+    return this._level
+  }
 
   constructor(user?: {}, key?: string,) {
     this.load(user)
