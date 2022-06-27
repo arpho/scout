@@ -19,7 +19,9 @@ export class Customer extends UserModel {
     load(v: {}) {
         this.telephones = []
         Object.assign(this, v)
-        this.role = super.roleFactory(this.level)
+       if(!v ||!v['level']){
+        this.level=3
+       }
         if(v&&v['dor']){
         this.dor = new DateModel(new Date(this.dor))}
         if (v && v['telephones']) {
