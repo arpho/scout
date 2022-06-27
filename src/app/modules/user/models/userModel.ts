@@ -31,6 +31,8 @@ export class UserModel implements ItemModelInterface {
     this.role = configs.accessLevel.filter(
       (access: RoleModel) => access.value === this._level
     )[0]; 
+
+    console.log("#*set level ",level,this.role)
   }
   get level():number{
     return this._level
@@ -38,11 +40,7 @@ export class UserModel implements ItemModelInterface {
 
   constructor(user?: {}, key?: string,) {
     this.load(user)
-    if(this._level){
-      this.role= configs.accessLevel.filter(
-        (access: RoleModel) => access.value === this._level
-      )[0];
-    }
+  console.log("#* userModfel",this)
     if (key) {
       this.key = key
       this.uid = key
@@ -140,7 +138,10 @@ export class UserModel implements ItemModelInterface {
 
   load(args) {
     Object.assign(this, args)
-    this.role = this.roleFactory(this._level)
+  if(!this.level){
+    this.level=3
+  }
+    this.role = this.roleFactory(this.level)
     this.key = this.key ?? this.uid
     this.enabled = Boolean(this.enabled)
     return this;

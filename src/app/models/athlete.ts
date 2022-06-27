@@ -5,13 +5,16 @@ import { UsersType } from "./usersType";
 
 export class Athlete extends Customer {
   key: string
-  constructor(value?: {}) {
-    super(value)
+  constructor(value?: {},key?:string) {
+    super(value,key)
     this.load(value)
   }
 
   load(v: {}) {
     Object.assign(this, v)
+    if(!this.level){
+      this.level=3
+    }
     return this
   }
   serialize() {
