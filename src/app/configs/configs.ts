@@ -12,6 +12,7 @@ export const configs = {
 	  {key:"atleta",value:UsersType.athlete},
 	  {key:"scout",value:UsersType.scout},
 	  {key:"team",value:UsersType.team},
+	  {key:"clerk",value:UsersType.clerk},
   ],
   offlineEntityNumber: 0
 };
