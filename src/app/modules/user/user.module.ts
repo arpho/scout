@@ -17,9 +17,16 @@ import { LogoutUserComponent } from './components/logout-user/logout-user.compon
     LoginPage,
     LogoutUserComponent
   ],
-  imports: [FormsModule, ReactiveFormsModule, IonicModule.forRoot(), RouterModule.forChild(routes),
-    CommonModule, DynamicFormModule
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule.forRoot(),
+    RouterModule.forChild(routes),
+    CommonModule,
+    DynamicFormModule,
+    
   ],
+  exports:[LogoutUserComponent]
 })
 export class UserModule { }
 
