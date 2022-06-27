@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -14,13 +14,15 @@ import { ProfilePage } from './modules/user/pages/profile/profile.page';
 import { EditUserPage } from './modules/user/pages/edit-user/edit-user.page';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { SelectorItemsPage } from './modules/item/pages/selector-items/selector-items.page';
+import { LogoutUserComponent } from './modules/user/components/logout-user/logout-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfilePage,
   EditUserPage,
-  SelectorItemsPage
+  SelectorItemsPage,
+  
   ],
   imports: [
     BrowserModule,
@@ -34,8 +36,14 @@ import { SelectorItemsPage } from './modules/item/pages/selector-items/selector-
   // Register the ServiceWorker as soon as the application is stable
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
-})],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+}),
+
+],
+  providers: [{
+     provide: RouteReuseStrategy,
+     useClass: IonicRouteStrategy
+     }],
   bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
