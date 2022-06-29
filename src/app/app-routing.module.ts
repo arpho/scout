@@ -22,7 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
-    path: 'customers-list',
+    path: 'customers',
     loadChildren: () => import('./pages/customers/list/customers-list/customers-list.module').then( m => m.CustomersListPageModule)
   }
 ];
