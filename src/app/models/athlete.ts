@@ -36,14 +36,14 @@ export class Athlete extends Customer {
   
     Object.assign(this, v)
     if(!this.level){
-      this.level=3
+      this.level=2
     }
 
     this.dob = v['dob']?new DateModel(new Date(v['dob'])):undefined
     this.dor= v['dor']?new DateModel(new Date(v['dor'])):new DateModel(new Date())
   }
   else{
-    this.level= 3
+    this.level= 2
   }
     return this
   }
