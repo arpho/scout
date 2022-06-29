@@ -24,6 +24,14 @@ const routes: Routes = [
   {
     path: 'customers',
     loadChildren: () => import('./pages/customers/list/customers-list/customers-list.module').then( m => m.CustomersListPageModule)
+  },
+  {
+    path: 'create-customer',
+    loadChildren: () => import('./pages/customers/new/create-customer/create-customer.module').then( m => m.CreateCustomerPageModule)
+  },
+  {
+    path: 'edit-customer',
+    loadChildren: () => import('./pages/customers/update/edit-customer/edit-customer.module').then( m => m.EditCustomerPageModule)
   }
 ];
 
