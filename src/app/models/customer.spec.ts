@@ -4,10 +4,10 @@ describe("empty customer",()=>{
   it("should be intantiated correctly",()=>{
     const customer = new Customer()
     expect(customer).toBeDefined()
-    expect(customer.role.value).toBe(3)
-    expect(customer.level).toBe(3)
-    expect(customer.role.value).toBe(3)
-    expect(customer.serialize().level).toBe(3)
+    expect(customer.role.value).toBe(2)
+    expect(customer.level).toBe(2)
+    expect(customer.role.value).toBe(2)
+    expect(customer.serialize().level).toBe(2)
     expect(customer.address).toBeDefined()
   })
   it("should serialize correctly",()=>{

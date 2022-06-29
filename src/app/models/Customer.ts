@@ -20,7 +20,7 @@ export class Customer extends UserModel {
         this.telephones = []
         Object.assign(this, v)
        if(!v ||!v['level']){
-        this.level=3
+        this.level=2
        }
         if(v&&v['dor']){
         this.dor = new DateModel(new Date(this.dor))}

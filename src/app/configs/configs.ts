@@ -4,9 +4,9 @@ import { UserTypeModel } from "../modules/user/models/UserTypeModel";
 
 export const configs = {
   accessLevel: [
-    new RoleModel({ key: "Sviluppatore", value: 1 }),
-    new RoleModel({ key: "Responsabile", value: 2 }),
-    new RoleModel({ key: "Utente standard", value: 3 })
+    new RoleModel({ key: "Sviluppatore", value: 0 }),
+    new RoleModel({ key: "Responsabile", value: 1 }),
+    new RoleModel({ key: "Utente standard", value: 2 })
   ],
   userType:[
 	  {key:"atleta",value:UsersType.athlete},

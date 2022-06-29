@@ -10,8 +10,8 @@ describe("Athlete should instantiate ",()=>{
     expect(test).toBeDefined()
     expect(test.key).toBeUndefined()
     expect(test.uid).toBeUndefined()
-    expect(test.level).toBe(3)
-    expect(test.role.value).toBe(3)
+    expect(test.level).toBe(2)
+    expect(test.role.value).toBe(2)
   })
   it("should serialize withouth undefined",()=>{
     const test = new Athlete()
@@ -19,7 +19,7 @@ describe("Athlete should instantiate ",()=>{
     expect(test.serialize().lastName).toBe("")
     expect(test.serialize().key).toBe("")
     expect(test.serialize().email).toBe("")
-    expect(test.serialize().level).toBe(3)
+    expect(test.serialize().level).toBe(2)
   })
   const data = {
     firstName:"joe",

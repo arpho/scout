@@ -18,7 +18,7 @@ describe("test build function", () => {
     email: "a@b.c",
     firstName: "joe",
     lastName: "friend",
-    level: 1,
+    level: 0,
     birthDate: { day: 16, month: 2, year: 1977 },
     enabled: true
   };
@@ -34,7 +34,9 @@ describe("test build function", () => {
     expect(user.birthDate instanceof DateModel).toBeTruthy();
     // checkingf privileges level
     expect(user.role instanceof RoleModel).toBeTruthy();
-    expect(user.role.key).toBe("Sviluppatore");
+    expect(user.roleFactory(0).key).toBe("Sviluppatore")
+    expect(user.roleFactory(1).key).toBe("Responsabile")
+    expect(user.roleFactory(2).key).toBe("Utente standard")
     expect(user.role.value).toBe(1);
   });
 });
