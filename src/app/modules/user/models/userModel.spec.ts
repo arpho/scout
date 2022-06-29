@@ -22,8 +22,8 @@ describe("test build function", () => {
     birthDate: { day: 16, month: 2, year: 1977 },
     enabled: true
   };
-  user.build(Val);
   it("the user is build correctly", () => {
+    user.build(Val);
     expect(user.firstName).toBe(val.firstName);
     expect(user.lastName).toBe(val.lastName);
     expect(user.email).toBe(val.email);
@@ -34,9 +34,11 @@ describe("test build function", () => {
     expect(user.birthDate instanceof DateModel).toBeTruthy();
     // checkingf privileges level
     expect(user.role instanceof RoleModel).toBeTruthy();
+    console.log("ruolo",user,val)
     expect(user.roleFactory(0).key).toBe("Sviluppatore")
     expect(user.roleFactory(1).key).toBe("Responsabile")
     expect(user.roleFactory(2).key).toBe("Utente standard")
+    expect(user.role.key).toBe("Sviluppatore")
     expect(user.role.value).toBe(1);
   });
 });
