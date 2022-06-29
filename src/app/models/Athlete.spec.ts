@@ -1,5 +1,6 @@
 import { Athlete } from "./athlete"
 import { DominantSide } from "./dominantSide"
+import { footballRole } from "./footbalRole"
 
 describe("Athlete should instantiate ",()=>{
   
@@ -25,10 +26,21 @@ describe("Athlete should instantiate ",()=>{
     lastName:"friend",
     key:"key",
     uid:"uid",
+    note:"nota",
+    profilePictureUrl:"qwweerty",
+    footballRole:footballRole["GK-goalkeeper"],
     level:1,
+    actualTeam:"oratorio",
+    youthSectorTeams:["peri","S.camillo"],
+    legalGuardianSignatureUrl:"popopo",
     dominantFoot:DominantSide.left,
     dominantHand:DominantSide.right,
-    enabled:true
+    previousTeams:["giarre calcio","ripostese"],
+    enabled:true,
+    height:184,
+    weight:83.7,
+    city:"milan",
+    country:"italy"
   }
   it("should load data",()=>{
     const test = new Athlete(data)
@@ -40,5 +52,42 @@ describe("Athlete should instantiate ",()=>{
     expect(test.enabled).toBe(true)
     expect(test.level).toBe(1)
     expect(test.role.value).toBe(1)
+    expect(test.dominantFoot).toBe(DominantSide.left)
+    expect(test.dominantHand).toBe(DominantSide.right)
+    expect(test.note).toBe(data.note)
+    expect(test.profilePictureUrl).toBe(data.profilePictureUrl)
+    expect(test.legalGuardianSignatureUrl).toBe(data.legalGuardianSignatureUrl)
+    expect(test.footballRole).toBe(footballRole["GK-goalkeeper"])
+    expect(test.actualTeam).toBe(data.actualTeam)
+    expect(test.youthSectorTeams.length).toBe(2)
+    expect(test.previousTeams.length).toBe(2)
+    expect(test.city).toBe(data.city)
+    expect(test.country).toBe(data.country)
+  })
+  it("should serialize data",()=>{
+    const test = new Athlete(data)
+    expect(test.serialize().firstName).toBe(data.firstName)
+    expect(test.serialize().lastName).toBe(data.lastName)
+    expect(test.serialize().uid).toBe(data.uid)
+    expect(test.serialize().key).toBe(data.key)
+    expect(test.serialize().email).toBe(data.email)
+    expect(test.serialize().enabled).toBe(true)
+    expect(test.serialize().level).toBe(1)
+    expect(test.role.value).toBe(1)
+    expect(test.serialize().dominantFoot).toBe(DominantSide.left)
+    expect(test.serialize().dominantHand).toBe(DominantSide.right)
+    expect(test.serialize().note).toBe(data.note)
+    expect(test.serialize().profilePictureUrl).toBe(data.profilePictureUrl)
+    expect(test.serialize().legalGuardianSignatureUrl).toBe(data.legalGuardianSignatureUrl)
+    expect(test.serialize().footballRole).toBe(footballRole["GK-goalkeeper"])
+    expect(test.serialize().actualTeam).toBe(data.actualTeam)
+    expect(test.serialize().youthSectorTeams.length).toBe(2)
+    expect(test.serialize().previousTeams.length).toBe(2)
+    expect(test.serialize().height).toBe(data.height)
+    expect(test.serialize().weight).toBe(data.weight)
+    expect(test.serialize().city).toBe(data.city)
+    expect(test.serialize().country).toBe(data.country)
+    expect(test.serialize().youthSectorTeams[0]).toBe[data.youthSectorTeams[0]]
+    expect(test.serialize().previousTeams[0]).toBe[data.previousTeams[0]]
   })
 })
