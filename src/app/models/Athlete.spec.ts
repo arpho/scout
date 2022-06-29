@@ -1,3 +1,4 @@
+import { DateModel } from "../modules/user/models/birthDateModel"
 import { Athlete } from "./athlete"
 import { DominantSide } from "./dominantSide"
 import { footballRole } from "./footbalRole"
@@ -27,6 +28,7 @@ describe("Athlete should instantiate ",()=>{
     key:"key",
     uid:"uid",
     note:"nota",
+    telephone:"+393928502668",
     profilePictureUrl:"qwweerty",
     footballRole:footballRole["GK-goalkeeper"],
     level:1,
@@ -51,6 +53,7 @@ describe("Athlete should instantiate ",()=>{
     expect(test.email).toBe(data.email)
     expect(test.enabled).toBe(true)
     expect(test.level).toBe(1)
+    expect(test.telephone).toBe(data.telephone)
     expect(test.role.value).toBe(1)
     expect(test.dominantFoot).toBe(DominantSide.left)
     expect(test.dominantHand).toBe(DominantSide.right)
@@ -63,6 +66,8 @@ describe("Athlete should instantiate ",()=>{
     expect(test.previousTeams.length).toBe(2)
     expect(test.city).toBe(data.city)
     expect(test.country).toBe(data.country)
+    expect(test.dor).toBeDefined()
+    expect(test.dor.formatDate()).toBe(new DateModel(new Date()).formatDate())
   })
   it("should serialize data",()=>{
     const test = new Athlete(data)
@@ -73,6 +78,7 @@ describe("Athlete should instantiate ",()=>{
     expect(test.serialize().email).toBe(data.email)
     expect(test.serialize().enabled).toBe(true)
     expect(test.serialize().level).toBe(1)
+    expect(test.serialize().telephone)
     expect(test.role.value).toBe(1)
     expect(test.serialize().dominantFoot).toBe(DominantSide.left)
     expect(test.serialize().dominantHand).toBe(DominantSide.right)
@@ -89,5 +95,6 @@ describe("Athlete should instantiate ",()=>{
     expect(test.serialize().country).toBe(data.country)
     expect(test.serialize().youthSectorTeams[0]).toBe[data.youthSectorTeams[0]]
     expect(test.serialize().previousTeams[0]).toBe[data.previousTeams[0]]
+    expect(test.serialize().dor).toBe(new DateModel(new Date()).formatDate())
   })
 })
