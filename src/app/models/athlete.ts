@@ -32,12 +32,19 @@ export class Athlete extends Customer {
   }
 
   load(v: {}) {
-    
+    if(v){
   
     Object.assign(this, v)
     if(!this.level){
       this.level=3
     }
+
+    this.dob = v['dob']?new DateModel(new Date(v['dob'])):undefined
+    this.dor= v['dor']?new DateModel(new Date(v['dor'])):new DateModel(new Date())
+  }
+  else{
+    this.level= 3
+  }
     return this
   }
   serialize() {
@@ -50,7 +57,7 @@ export class Athlete extends Customer {
       "key":serializer.serialize2String( this.key),
       "note": serializer.serialize2String(this.note),
       "profilePictureUrl":serializer.serialize2String(this.profilePictureUrl),
-      "footballRole":serializer.serialize2PositiveNumber(this.footballRole),
+      "footballRole":serializer.serialize2PositiveNumber(this.footballRole,0),
       "bioType":serializer.serialize2PositiveNumber(this.bioType),
       "actualTeam":serializer.serialize2String(this.actualTeam),
       "legalGuardianSignatureUrl":serializer.serialize2String(this.legalGuardianSignatureUrl),
@@ -61,7 +68,8 @@ export class Athlete extends Customer {
       "city":serializer.serialize2String(this.city),
       "country":serializer.serialize2String(this.country),
       "dob":serializer.serializeDateModel(this.dob),
-      "dor":serializer.serializeDateModel(this.dor)
+      "dor":serializer.serializeDateModel(this.dor),
+      "telephone":serializer.serialize2String(this.telephone)
     }
   }
 

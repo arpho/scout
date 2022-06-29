@@ -26,6 +26,7 @@ describe("Athlete should instantiate ",()=>{
     email:"i@iol.it",
     lastName:"friend",
     key:"key",
+    dob:new DateModel(new Date("16-03-1977")).formatDate(),
     uid:"uid",
     note:"nota",
     telephone:"+393928502668",
@@ -53,6 +54,7 @@ describe("Athlete should instantiate ",()=>{
     expect(test.email).toBe(data.email)
     expect(test.enabled).toBe(true)
     expect(test.level).toBe(1)
+    expect(test.dob.formatDate()).toBe(new DateModel(new Date("16-03-1977")).formatDate())
     expect(test.telephone).toBe(data.telephone)
     expect(test.role.value).toBe(1)
     expect(test.dominantFoot).toBe(DominantSide.left)
@@ -79,6 +81,7 @@ describe("Athlete should instantiate ",()=>{
     expect(test.serialize().enabled).toBe(true)
     expect(test.serialize().level).toBe(1)
     expect(test.serialize().telephone)
+    expect(test.serialize().dob).toBe(new DateModel(new Date("16-03-1977")).formatDate())
     expect(test.role.value).toBe(1)
     expect(test.serialize().dominantFoot).toBe(DominantSide.left)
     expect(test.serialize().dominantHand).toBe(DominantSide.right)
