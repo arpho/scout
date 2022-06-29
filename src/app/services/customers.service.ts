@@ -11,7 +11,6 @@ import { MyItemComponent } from 'src/app/modules/item/components/item/item.compo
 import { MyFirebaseHelper } from 'src/app/modules/helpers/createFirebaseApp';
 import {configs} from '../configs/credentials'
 import { CustomersFactoryService } from './business/customers-constructor.service';
-import { PopulateChildren } from './business/populateChildren';
 import { AuthService } from 'src/app/modules/user/services/auth.service';
 @Injectable({
   providedIn: 'root'
@@ -52,10 +51,6 @@ db:Database
         this.items_list.push(item)
 
 
-      })
-      this.items_list.forEach((user:Customer)=>{
-
-        new PopulateChildren().doitOn(user,this.items_list)
       })
       this.publishItems(this.items_list)
     })
