@@ -19,7 +19,7 @@ export class Customer extends UserModel {
     load(v: {}) {
         this.telephones = []
         Object.assign(this, v)
-       if(!v ||!v['level']){
+       if(!v ||v['level']==undefined){
         this.level=2
        }
         if(v&&v['dor']){
@@ -51,7 +51,7 @@ export class Customer extends UserModel {
         var out = {
             ...super.serialize(),
             ...{
-				level:serializers.serialize2PositiveNumber( this.level,3),
+				level:serializers.serialize2PositiveNumber( this.level,2),
                 telephones: telephones,
                 archived: !!this.archived,
                 dor: new DateModel(this.dor).formatDate(),
