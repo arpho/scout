@@ -5,7 +5,10 @@ import { Customer } from 'src/app/models/Customer';
 import { OptionsMaker } from 'src/app/modules/dynamic-form/helpers/optionMaker';
 import { DropdownQuestion } from 'src/app/modules/dynamic-form/models/question-dropdown';
 import { TextboxQuestion } from 'src/app/modules/dynamic-form/models/question-textbox';
+import { MyToastService } from 'src/app/modules/helpers/services/toaster/my-toast-service.service';
 import { SwitchQuestion } from 'src/app/modules/item/models/question-switch';
+import { CustomersService } from 'src/app/services/customers.service';
+import { servicesVersion } from 'typescript';
 
 @Component({
   selector: 'app-edit-customer',
@@ -18,6 +21,8 @@ export class EditCustomerPage implements OnInit {
   formFields:any[]
   constructor(
     public modalCtrl:ModalController,
+    public service:CustomersService,
+    public toaster:MyToastService,
     public navParams:NavParams) { }
 
   ngOnInit() {
@@ -64,8 +69,29 @@ export class EditCustomerPage implements OnInit {
   filter(ev){
     console.log("typing",ev)
   }
-  submit(ev){
+ async submit(ev){
     console.log("submit",ev)
+    this.customer.load(ev)
+    console.log("updated",this.customer)
+    try{
+   await this.service.updateItem(this.customer)
+    await this.service.addCustomClaim({
+      email:this.customer.email,
+      claims:{
+        enabled:this.customer.enabled,
+      level:this.customer.level
+      }
+    })
+    this.toaster.presentToast("utente modificato")
+    this.dismiss()
+
+    }
+catch(err){
+  console.error(err)
+  this.toaster.presentToast("ho riscontrato dei problemi")
+  this.dismiss()
+}
+
   }
 
 }
