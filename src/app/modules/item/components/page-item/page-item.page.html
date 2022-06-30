@@ -19,9 +19,9 @@
     </div>
     <app-show-value [value]="value2" class="value2"></app-show-value>
 
-    <span class="value4" slot="start" style="white-space: nowrap;">
+    <app-show-value [value]="value4" class="value4" slot="start" style="white-space: nowrap;">
 
-    </span>
+    </app-show-value>
 
     <div>
       <span [ngSwitch]="Item?.hasQuickActions()">
