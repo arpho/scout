@@ -7,6 +7,7 @@ import { DropdownQuestion } from 'src/app/modules/dynamic-form/models/question-d
 import { TextboxQuestion } from 'src/app/modules/dynamic-form/models/question-textbox';
 import { MyToastService } from 'src/app/modules/helpers/services/toaster/my-toast-service.service';
 import { SwitchQuestion } from 'src/app/modules/item/models/question-switch';
+import { RoleModel } from 'src/app/modules/user/models/privilegesLevelModel';
 import { CustomersService } from 'src/app/services/customers.service';
 import { servicesVersion } from 'typescript';
 
@@ -28,7 +29,7 @@ export class EditCustomerPage implements OnInit {
   ngOnInit() {
     this.customer= this.navParams.get('item')
     console.log("customer",this.customer)
-
+    const mapRole2Key= (role:RoleModel)=>role.key
     this.formFields = [
       new TextboxQuestion({
         key:"firstName",
@@ -55,9 +56,7 @@ export class EditCustomerPage implements OnInit {
         key:"level",
         label:"autorizzazioni",
         value:this.customer.level,
-        options:new OptionsMaker().makeOptionFromArray(configs.accessLevel.map(role=>{
-          return role.key
-        }))
+        options:new OptionsMaker().makeOptionFromArray(configs.accessLevel.map(mapRole2Key))
       })
     ]
   }
