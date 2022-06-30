@@ -6,7 +6,6 @@ import {addEntry,
   getAllEntries,
   updateEntry,
 } from "./entryController";
-import {addExtraction} from "./extractionController";
 import {addUserProfile} from "./insertUserProfile";
 
 const app = express();
@@ -17,12 +16,11 @@ exports.app = functions.https.onRequest(app);
 app.get("/entries", getAllEntries);
 app.patch("/entries/:entryId", updateEntry);
 app.delete("/entries/:entryId", deleteEntry);
-app.post("/extraction", addExtraction);
 exports.adminAddUserProfile = functions.https.onCall((data)=>{
   addUserProfile(data);
 });
 
-exports.addCustomClaim = functions.https.onCall((data) => {
+exports.addCustomClaim = functions.https.onCall((data, context) => {
   return admin.auth().getUserByEmail(data.email).then((user) => {
     return admin.auth().setCustomUserClaims(user.uid, data.claim).then(() => {
       return {
@@ -30,7 +28,7 @@ exports.addCustomClaim = functions.https.onCall((data) => {
         as been set on ${data.email}`,
       };
     }).catch((err) => {
-      return err;
+      return {err, context};
     });
   });
 });
