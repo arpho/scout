@@ -40,7 +40,7 @@ export class EditCustomerPage implements OnInit {
       new TextboxQuestion({
         key:"lastName",
         label:"cognome",
-        value:this.customer.firstName,
+        value:this.customer.lastName,
         required:true
       }),
       new SwitchQuestion({
