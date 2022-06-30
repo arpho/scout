@@ -87,7 +87,7 @@ export class EditCustomerPage implements OnInit {
 
     }
 catch(err){
-  console.error(err)
+  console.log(err)
   this.toaster.presentToast("ho riscontrato dei problemi")
   this.dismiss()
 }
