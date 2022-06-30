@@ -33,9 +33,9 @@ export class Athlete extends Customer {
 
   load(v: {}) {
     if(v){
-  
     Object.assign(this, v)
-    if(!this.level){
+
+    if(this.level==undefined){
       this.level=2
     }
 
