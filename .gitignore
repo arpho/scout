@@ -32,3 +32,5 @@ npm-debug.log*
 /www
 
 src/app/configs/scoutf24-67f89-firebase-adminsdk-jocuy-db810b42a0.json
+
+src/app/configs/scoutf24-67f89-37d0bc619506.json
