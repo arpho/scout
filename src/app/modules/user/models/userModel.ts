@@ -31,6 +31,7 @@ export class UserModel implements ItemModelInterface {
     this.role = configs.accessLevel.filter(
       (access: RoleModel) => access.value === this._level
     )[0]; 
+    console.log(" #* setting level",level,this.role)
   }
   get level():number{
     return this._level
@@ -80,18 +81,12 @@ export class UserModel implements ItemModelInterface {
   }
 
   build(item: {}) {
-    const loader = ([Key, value]) => {
-      this[Key] = value;
-    };
-    Object.entries(item).forEach(loader);
+    Object.assign(this,item)
     // tslint:disable-next-line: no-string-literal
     if (item['birthDate']) {
       // tslint:disable-next-line: no-strin
       this.birthDate = new DateModel(item['birthDate']);
     }
-    this.role = configs.accessLevel.filter(
-      (access: RoleModel) => access.value === this._level
-    )[0];
   }
   hasQuickActions() {
     return false;
