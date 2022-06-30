@@ -4,8 +4,9 @@ import { UserTypeModel } from "../modules/user/models/UserTypeModel";
 
 export const configs = {
   accessLevel: [
-    new RoleModel({ key: "Sviluppatore", value: 0 }),
-    new RoleModel({ key: "Responsabile", value: 1 }),
+    new RoleModel({key:"fai una scelta",value:0}),// i select non mostrano il valore 0
+    new RoleModel({ key: "Sviluppatore", value: 1 }),
+    new RoleModel({ key: "Responsabile", value: 3 }),
     new RoleModel({ key: "Utente standard", value: 2 })
   ],
   userType:[
