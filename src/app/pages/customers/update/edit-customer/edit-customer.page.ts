@@ -67,12 +67,10 @@ export class EditCustomerPage implements OnInit {
   }
 
   filter(ev){
-    console.log("typing",ev)
   }
  async submit(ev){
     console.log("submit",ev)
     this.customer.load(ev)
-    console.log("updated",this.customer)
     try{
    await this.service.updateItem(this.customer)
     await this.service.addCustomClaim({
