@@ -104,7 +104,6 @@ db:Database
 return	addAdminRole({ email: adminEmail })
  } // add claims cloud funxction
  addCustomClaim(data:{email:string, claims:{}}){
-  console.log("setting claims",data.claims)
 	const functions = getFunctions()
 
   const addAdminRole = httpsCallable(functions,'addAdminRole')
